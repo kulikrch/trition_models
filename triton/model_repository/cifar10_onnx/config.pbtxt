@@ -1,0 +1,49 @@
+name: "cifar10_onnx"
+platform: "onnxruntime_onnx"
+max_batch_size: 32
+input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    dims: [ 3, 32, 32 ]
+  }
+]
+output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [ 10 ]
+  }
+]
+
+# Оптимизации для ONNX
+optimization {
+  cuda {
+    graphs: true
+  }
+  execution_accelerators {
+    gpu_execution_accelerator : [ {
+      name : "tensorrt"
+      parameters { key: "precision_mode" value: "FP16" }
+      parameters { key: "max_workspace_size_bytes" value: "1073741824" }
+    }]
+  }
+}
+
+# Динамическое батчинг
+dynamic_batching {
+  max_queue_delay_microseconds: 100
+  preferred_batch_size: [ 8, 16 ]
+}
+
+# Версии модели
+version_policy: { all { }}
+
+# Инстансы модели
+instance_group [
+  {
+    count: 2
+    kind: KIND_GPU
+    gpus: [ 0 ]
+  }
+]

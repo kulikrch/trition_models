@@ -1,0 +1,36 @@
+# Core ML libraries
+torch>=2.0.0
+torchvision>=0.15.0
+tensorflow>=2.12.0
+numpy>=1.24.0
+pandas>=1.5.0
+scikit-learn>=1.2.0
+
+# Model conversion and optimization
+onnx>=1.14.0
+onnxruntime>=1.15.0
+onnxruntime-gpu>=1.15.0
+
+# Web framework for microservice
+fastapi>=0.95.0
+uvicorn>=0.21.0
+pydantic>=1.10.0
+
+# Triton client
+tritonclient[all]>=2.30.0
+
+# Monitoring and logging
+prometheus-client>=0.16.0
+grafana-api>=1.0.0
+
+# Image processing
+Pillow>=9.5.0
+opencv-python>=4.7.0
+
+# Development and testing
+pytest>=7.3.0
+requests>=2.28.0
+python-multipart>=0.0.6
+
+# Docker support
+docker>=6.0.0

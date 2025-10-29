@@ -1,0 +1,41 @@
+name: "cifar10_pytorch"
+platform: "pytorch_libtorch"
+max_batch_size: 32
+input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    dims: [ 3, 32, 32 ]
+  }
+]
+output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [ 10 ]
+  }
+]
+
+# Оптимизации
+optimization {
+  cuda {
+    graphs: true
+  }
+}
+
+# Динамическое батчинг
+dynamic_batching {
+  max_queue_delay_microseconds: 100
+}
+
+# Версии модели
+version_policy: { all { }}
+
+# Инстансы модели
+instance_group [
+  {
+    count: 1
+    kind: KIND_GPU
+    gpus: [ 0 ]
+  }
+]
