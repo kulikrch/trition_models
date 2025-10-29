@@ -1,0 +1,28 @@
+# Windows-совместимые зависимости (без конфликтов)
+
+# Core ML (CPU versions)
+torch>=2.0.0
+onnx>=1.14.0
+onnxruntime>=1.15.0
+numpy>=1.24.0
+
+# Web framework
+fastapi>=0.95.0
+uvicorn[standard]>=0.21.0
+pydantic>=1.10.0
+
+# Triton client (только HTTP, без GPU)
+tritonclient[http]>=2.30.0
+
+# Image processing
+Pillow>=9.5.0
+
+# Monitoring
+prometheus-client>=0.16.0
+
+# Utilities
+requests>=2.28.0
+python-multipart>=0.0.6
+
+# Development
+pytest>=7.3.0

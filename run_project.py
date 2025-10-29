@@ -38,8 +38,8 @@ class MLProjectRunner:
         
         # Проверяем Python пакеты
         required_packages = [
-            'torch', 'torchvision', 'onnx', 'onnxruntime', 
-            'fastapi', 'uvicorn', 'tritonclient', 'prometheus_client'
+            'torch', 'onnx', 'onnxruntime', 
+            'fastapi', 'uvicorn', 'prometheus_client'
         ]
         
         missing_packages = []
