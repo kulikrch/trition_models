@@ -36,17 +36,25 @@
 ## Быстрый старт
 
 ```bash
-# Полный пайплайн (обучение + развертывание)
-python run_project.py
+# 🚀 Для CPU (рекомендуется)
+pip install -r requirements-cpu.txt
+python run_project.py --epochs 5  # Быстрая демонстрация
+
+# Полный пайплайн
+python run_project.py --epochs 10
 
 # Быстрый старт без обучения
 python run_project.py --skip-training
 
 # Использование Makefile
-make full-pipeline
+make install-cpu
+make cpu-demo           # 5 эпох
+make full-pipeline-cpu  # 10 эпох
 ```
 
-См. [QUICK_START.md](QUICK_START.md) для подробных инструкций.
+**⚡ Оптимизировано для CPU!** Не требуется GPU.
+
+См. [QUICK_START.md](QUICK_START.md) и [SETUP_CPU.md](SETUP_CPU.md) для инструкций.
 
 ## Архитектура
 

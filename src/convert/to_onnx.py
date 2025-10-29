@@ -18,7 +18,7 @@ class ONNXConverter:
     def __init__(self, model_path, output_dir='../../models'):
         self.model_path = model_path
         self.output_dir = output_dir
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.device = 'cpu'  # Принудительно используем CPU
         
     def load_pytorch_model(self):
         """Загружает обученную PyTorch модель"""
@@ -108,7 +108,6 @@ class ONNXConverter:
                 _ = pytorch_model(test_input)
         
         # Измерение времени PyTorch
-        torch.cuda.synchronize() if torch.cuda.is_available() else None
         import time
         pytorch_times = []
         
@@ -116,7 +115,6 @@ class ONNXConverter:
             start = time.time()
             with torch.no_grad():
                 _ = pytorch_model(test_input)
-            torch.cuda.synchronize() if torch.cuda.is_available() else None
             end = time.time()
             pytorch_times.append(end - start)
         

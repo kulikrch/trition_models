@@ -23,7 +23,7 @@ class PyTorchOptimizer:
     def __init__(self, model_path, output_dir='../../models'):
         self.model_path = model_path
         self.output_dir = output_dir
-        self.device = 'cpu'  # Quantization работает только на CPU
+        self.device = 'cpu'  # Используем CPU
         
     def load_model(self):
         """Загружает обученную модель"""
@@ -48,7 +48,7 @@ class PyTorchOptimizer:
             root='./data', train=False, download=True, transform=transform
         )
         
-        return DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)
+        return DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=0)
     
     def evaluate_model(self, model, test_loader, model_name="Model"):
         """Оценивает точность модели"""

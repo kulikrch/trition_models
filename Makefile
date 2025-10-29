@@ -9,6 +9,9 @@ help:  ## Показать это сообщение помощи
 install:  ## Установить все зависимости
 	pip install -r requirements.txt
 
+install-cpu:  ## Установить CPU-версии зависимостей
+	pip install -r requirements-cpu.txt
+
 train:  ## Обучить модель
 	python src/train/train.py
 
@@ -34,8 +37,14 @@ test:  ## Запустить тесты
 full-pipeline:  ## Запустить полный пайплайн
 	python run_project.py
 
+full-pipeline-cpu:  ## Полный пайплайн для CPU (10 эпох)
+	python run_project.py --epochs 10
+
 quick-start:  ## Быстрый старт (без обучения)
 	python run_project.py --skip-training
+
+cpu-demo:  ## Быстрая демонстрация для CPU (5 эпох)
+	python run_project.py --epochs 5
 
 status:  ## Показать статус сервисов
 	python run_project.py --status-only

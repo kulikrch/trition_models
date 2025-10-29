@@ -74,7 +74,7 @@ class MLProjectRunner:
         
         return True
     
-    def train_model(self, epochs=50):
+    def train_model(self, epochs=10):  # Уменьшаем по умолчанию для CPU
         """Обучает модель"""
         print(f"\n{'='*60}")
         print("STEP 1: TRAINING MODEL")
@@ -389,7 +389,7 @@ client = httpclient.InferenceServerClient(url="localhost:8000")
         print(f"✓ Project report generated: {report_path}")
         return True
     
-    def run_full_pipeline(self, epochs=50):
+    def run_full_pipeline(self, epochs=10):  # Уменьшаем по умолчанию для CPU
         """Запускает полный пайплайн проекта"""
         print("="*80)
         print("STARTING FULL ML DEPLOYMENT PIPELINE")
@@ -426,7 +426,7 @@ client = httpclient.InferenceServerClient(url="localhost:8000")
 
 def main():
     parser = argparse.ArgumentParser(description='ML Project Pipeline Runner')
-    parser.add_argument('--epochs', type=int, default=50, help='Number of training epochs')
+    parser.add_argument('--epochs', type=int, default=10, help='Number of training epochs (default: 10 for CPU)')
     parser.add_argument('--skip-training', action='store_true', help='Skip model training')
     parser.add_argument('--status-only', action='store_true', help='Only show service status')
     parser.add_argument('--stop', action='store_true', help='Stop all services')

@@ -13,8 +13,8 @@ from model import get_model
 
 
 class Trainer:
-    def __init__(self, model, device='cuda', batch_size=128, learning_rate=0.001):
-        self.device = device if torch.cuda.is_available() else 'cpu'
+    def __init__(self, model, device='cpu', batch_size=128, learning_rate=0.001):
+        self.device = 'cpu'  # Принудительно используем CPU
         self.model = model.to(self.device)
         self.batch_size = batch_size
         self.learning_rate = learning_rate
@@ -53,12 +53,12 @@ class Trainer:
             root='./data', train=False, download=True, transform=test_transform
         )
         
-        # Data loaders
+        # Data loaders (уменьшаем num_workers для CPU)
         train_loader = DataLoader(
-            trainset, batch_size=self.batch_size, shuffle=True, num_workers=2
+            trainset, batch_size=self.batch_size, shuffle=True, num_workers=0
         )
         test_loader = DataLoader(
-            testset, batch_size=self.batch_size, shuffle=False, num_workers=2
+            testset, batch_size=self.batch_size, shuffle=False, num_workers=0
         )
         
         return train_loader, test_loader
@@ -191,8 +191,8 @@ def main():
     # Создание trainer
     trainer = Trainer(
         model=model,
-        device='cuda' if torch.cuda.is_available() else 'cpu',
-        batch_size=128,
+        device='cpu',
+        batch_size=64,  # Уменьшаем batch size для CPU
         learning_rate=0.001
     )
     
