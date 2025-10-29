@@ -87,7 +87,7 @@ class MLWebApp:
         img_array = (img_array - self.mean) / self.std
         img_array = np.transpose(img_array, (2, 0, 1))
         
-        return torch.from_numpy(img_array).unsqueeze(0)
+        return torch.from_numpy(img_array).unsqueeze(0).float()
     
     def predict(self, image):
         """Выполняет предсказание"""
