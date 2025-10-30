@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "timestamp": "2025-10-30 23:19:07",
+    "test_runs": 100,
+    "warmup_runs": 20,
+    "device": "cpu",
+    "platform": "CPU"
+  },
+  "results": [
+    {
+      "model_name": "PyTorch Original",
+      "file_path": "models/working_model.pth",
+      "file_size_mb": 2.0821027755737305,
+      "avg_time_ms": 1.911910999333486,
+      "std_time_ms": 0.5941672696870477,
+      "min_time_ms": 0.7631000189576298,
+      "max_time_ms": 3.3210999972652644,
+      "p95_time_ms": 3.160334982385393,
+      "throughput_fps": 523.0368988664281,
+      "predicted_class": "ship",
+      "confidence": 0.1063583716750145,
+      "test_runs": 100
+    },
+    {
+      "model_name": "ONNX",
+      "file_path": "models/working_model.onnx",
+      "file_size_mb": 2.080881118774414,
+      "avg_time_ms": 0.12410500028636307,
+      "std_time_ms": 0.3783728715717924,
+      "min_time_ms": 0.07040001219138503,
+      "max_time_ms": 3.8776999863330275,
+      "p95_time_ms": 0.17950499895960093,
+      "throughput_fps": 8057.69306387796,
+      "predicted_class": "dog",
+      "confidence": 0.07280990481376648,
+      "test_runs": 100
+    },
+    {
+      "model_name": "PyTorch Quantized",
+      "file_path": "models/working_model_quantized.pth",
+      "file_size_mb": 0.5799264907836914,
+      "avg_time_ms": 1.0970719993929379,
+      "std_time_ms": 0.4330219846479674,
+      "min_time_ms": 0.7097999914549291,
+      "max_time_ms": 2.3970000038389117,
+      "p95_time_ms": 2.0318850001785904,
+      "throughput_fps": 911.5172026570249,
+      "predicted_class": "ship",
+      "confidence": 0.10760663449764252,
+      "test_runs": 100
+    },
+    {
+      "model_name": "PyTorch Pruned",
+      "file_path": "models/working_model_pruned.pth",
+      "file_size_mb": 2.082108497619629,
+      "avg_time_ms": 0.6099279987392947,
+      "std_time_ms": 0.12495214608792558,
+      "min_time_ms": 0.4979000077582896,
+      "max_time_ms": 1.3420000032056123,
+      "p95_time_ms": 0.8609749958850442,
+      "throughput_fps": 1639.537784897519,
+      "predicted_class": "ship",
+      "confidence": 0.11071649193763733,
+      "test_runs": 100
+    },
+    {
+      "model_name": "PyTorch Combined",
+      "file_path": "models/working_model_combined.pth",
+      "file_size_mb": 0.5799131393432617,
+      "avg_time_ms": 0.9392359992489219,
+      "std_time_ms": 0.4031321021393938,
+      "min_time_ms": 0.6161000055726618,
+      "max_time_ms": 2.300599997397512,
+      "p95_time_ms": 1.8887800004449673,
+      "throughput_fps": 1064.6951360463922,
+      "predicted_class": "ship",
+      "confidence": 0.10818503797054291,
+      "test_runs": 100
+    }
+  ]
+}
