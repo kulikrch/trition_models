@@ -1,0 +1,27 @@
+# Dockerfile для Triton клиента
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Устанавливаем системные зависимости
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем Triton клиент
+RUN pip install --no-cache-dir \
+    tritonclient[all] \
+    numpy \
+    pillow \
+    requests
+
+# Копируем тестовые скрипты
+COPY src/triton/test_triton.py .
+COPY working_demo.py .
+
+# Создаем non-root пользователя
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /app
+USER app
+
+CMD ["python", "test_triton.py"]

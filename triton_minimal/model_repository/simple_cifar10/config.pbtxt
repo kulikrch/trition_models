@@ -1,6 +1,6 @@
-name: "cifar10_pytorch"
+name: "simple_cifar10"
 platform: "pytorch_libtorch"
-max_batch_size: 8
+max_batch_size: 0
 input [
   {
     name: "input__0"
@@ -23,8 +23,4 @@ instance_group [
   }
 ]
 
-dynamic_batching {
-  max_queue_delay_microseconds: 100
-}
-
-version_policy: { all { } }
+version_policy: { all { }}

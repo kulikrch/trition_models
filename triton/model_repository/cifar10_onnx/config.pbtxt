@@ -1,6 +1,6 @@
 name: "cifar10_onnx"
 platform: "onnxruntime_onnx"
-max_batch_size: 32
+max_batch_size: 8
 input [
   {
     name: "input"
@@ -16,28 +16,15 @@ output [
   }
 ]
 
-# Оптимизации для CPU
-optimization {
-  execution_accelerators {
-    cpu_execution_accelerator : [ {
-      name : "openvino"
-    }]
-  }
-}
-
-# Динамическое батчинг
-dynamic_batching {
-  max_queue_delay_microseconds: 100
-  preferred_batch_size: [ 8, 16 ]
-}
-
-# Версии модели
-version_policy: { all { }}
-
-# Инстансы модели
 instance_group [
   {
-    count: 2
+    count: 1
     kind: KIND_CPU
   }
 ]
+
+dynamic_batching {
+  max_queue_delay_microseconds: 100
+}
+
+version_policy: { all { } }

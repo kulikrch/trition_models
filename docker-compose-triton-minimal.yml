@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  triton-minimal:
+    image: nvcr.io/nvidia/tritonserver:23.10-py3
+    container_name: triton-minimal
+    ports:
+      - "8001:8001"
+      - "8002:8002"
+    volumes:
+      - ./triton_minimal/model_repository:/models
+    command: tritonserver --model-repository=/models --log-verbose=1
+    restart: unless-stopped
